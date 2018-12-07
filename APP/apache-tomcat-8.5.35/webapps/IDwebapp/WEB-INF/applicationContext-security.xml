@@ -1,116 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
-  - Sample namespace-based configuration
-  -
-  -->
-
-
-<beans xmlns:security="http://www.springframework.org/schema/security"
-    xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+- Sample namespace-based configuration
+-
+-->
+<beans xmlns:security="http://www.springframework.org/schema/security" xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
-
-   
-   <!--
-		Enable security, let the casAuthenticationEntryPoint handle all intercepted urls.
-		The CAS_FILTER needs to be in the right position within the filter chain.
-	-->
-	
-
-	<security:http entry-point-ref="casAuthenticationEntryPoint" auto-config="true">
-	
-		<security:intercept-url pattern="/secure/menu.jsp" access="ROLE_MANAGEMENT, ROLE_SALES, ROLE_HUMANR, ROLE_PURCHASES, ROLE_AUDITOR"></security:intercept-url>
-		<security:intercept-url pattern="/secure/compras/autorizar_compras.jsp" access="ROLE_MANAGEMENT"></security:intercept-url>
-		<security:intercept-url pattern="/secure/compras/gestion_compras.jsp" access="ROLE_PURCHASES, ROLE_AUDITOR"></security:intercept-url>
-		<security:intercept-url pattern="/secure/compras/gestion_proveedores.jsp" access="ROLE_PURCHASES"></security:intercept-url>
-
-		<security:intercept-url pattern="/secure/nominas/gestion_nominas.jsp" access="ROLE_HUMANR, ROLE_AUDITOR"></security:intercept-url>
-		<security:intercept-url pattern="/secure/nominas/gestion_trabajadores.jsp" access="ROLE_HUMANR"></security:intercept-url>
-
-		<security:intercept-url pattern="/secure/ventas/gestion_clientes.jsp" access="ROLE_SALES, ROLE_AUDITOR"></security:intercept-url>
-		<security:intercept-url pattern="/secure/ventas/gestion_facturas.jsp" access="ROLE_SALES"></security:intercept-url>
-		<security:intercept-url pattern="/secure/ventas/gestion_presupuestos.jsp" access="ROLE_SALES"></security:intercept-url>
-
-		<security:intercept-url pattern="/secure/extreme/**" access="ROLE_SUPERVISOR"></security:intercept-url>
-		<security:intercept-url pattern="/secure/**" access="ROLE_USER"></security:intercept-url>
-				
-		<security:custom-filter position="CAS_FILTER" ref="casAuthenticationFilter"></security:custom-filter>
-		<security:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
-		<security:custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
-	    <security:logout logout-success-url="/"/>
-	</security:http>
-
-
 	<!--
-		Required for the casProcessingFilter, so define it explicitly set and
-		specify an Id Even though the authenticationManager is created by
-		default when namespace based config is used.
+	Enable security, let the casAuthenticationEntryPoint handle all intercepted urls.
+	The CAS_FILTER needs to be in the right position within the filter chain.
 	-->
-	<security:authentication-manager alias="authenticationManager">
-		<security:authentication-provider ref="casAuthenticationProvider"></security:authentication-provider>
-	</security:authentication-manager>
-
+	<http entry-point-ref="casAuthenticationEntryPoint" auto-config="true">
+		<intercept-url pattern="/secure/menu.jsp" access="ROLE_MANAGEMENT, ROLE_SALES, ROLE_HUMANR, ROLE_PURCHASES, ROLE_AUDITOR">
+		</intercept-url>
+		<intercept-url pattern="/secure/compras/autorizar_compras.jsp" access="ROLE_MANAGEMENT">
+		</intercept-url>
+		<intercept-url pattern="/secure/compras/gestion_compras.jsp" access="ROLE_PURCHASES, ROLE_AUDITOR">
+		</intercept-url>
+		<intercept-url pattern="/secure/compras/gestion_proveedores.jsp" access="ROLE_PURCHASES">
+		</intercept-url>
+		<intercept-url pattern="/secure/nominas/gestion_nominas.jsp" access="ROLE_HUMANR, ROLE_AUDITOR">
+		</intercept-url>
+		<intercept-url pattern="/secure/nominas/gestion_trabajadores.jsp" access="ROLE_HUMANR">
+		</intercept-url>
+		<intercept-url pattern="/secure/ventas/gestion_clientes.jsp" access="ROLE_SALES, ROLE_AUDITOR">
+		</intercept-url>
+		<intercept-url pattern="/secure/ventas/gestion_facturas.jsp" access="ROLE_SALES">
+		</intercept-url>
+		<intercept-url pattern="/secure/ventas/gestion_presupuestos.jsp" access="ROLE_SALES">
+		</intercept-url>
+		<intercept-url pattern="/secure/extreme/**" access="ROLE_SUPERVISOR">
+		</intercept-url>
+		<intercept-url pattern="/secure/**" access="ROLE_USER">
+		</intercept-url>
+		<custom-filter position="CAS_FILTER" ref="casAuthenticationFilter">
+		</custom-filter>
+		<custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER" />
+		<custom-filter ref="singleLogoutFilter" before="CAS_FILTER" />
+		<logout logout-success-url="/" />
+	</http>
 	<!--
-		This section is used to configure CAS. The service is the
-		actual redirect that will be triggered after the CAS login sequence.
+	Required for the casProcessingFilter, so define it explicitly set and
+	specify an Id Even though the authenticationManager is created by
+	default when namespace based config is used.
+	-->
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider ref="casAuthenticationProvider">
+		</authentication-provider>
+	</authentication-manager>
+	<!--
+	This section is used to configure CAS. The service is the
+	actual redirect that will be triggered after the CAS login sequence.
 	-->
 	<bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
-		<property name="service" value="https://localhost:8443/IDwebapp/j_spring_cas_security_check"></property>
-		<property name="sendRenew" value="false"></property>
-	</bean>	
-
-        <!--
-		The CAS filter handles the redirect from the CAS server and starts the ticket validation.
-	-->
-	<bean id="casAuthenticationFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
-		<property name="authenticationManager" ref="authenticationManager"></property>
+		<property name="service" value="https://localhost:8443/IDwebapp/j_spring_cas_security_check">
+		</property>
+		<property name="sendRenew" value="false">
+		</property>
 	</bean>
-
+	<!-- The CAS filter handles the redirect from the CAS server and starts the ticket validation. -->
+	<bean id="casAuthenticationFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
+		<property name="authenticationManager" ref="authenticationManager">
+		</property>
+	</bean>
 	<!--
-		The entryPoint intercepts all the CAS authentication requests.
-		It redirects to the CAS loginUrl for the CAS login page.
+	The entryPoint intercepts all the CAS authentication requests.
+	It redirects to the CAS loginUrl for the CAS login page.
 	-->
 	<bean id="casAuthenticationEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
-		<property name="loginUrl" value="https://localhost:18443/cas-server-webapp-4.0.0/login"></property>
-		<property name="serviceProperties" ref="serviceProperties"></property>
+		<property name="loginUrl" value="https://localhost:18443/cas-server-webapp-4.0.0/login">
+		</property>
+		<property name="serviceProperties" ref="serviceProperties">
+		</property>
 	</bean>
-
-	<!-- 
-		Handles the CAS ticket processing.
-	 -->
+	<!-- Handles the CAS ticket processing. -->
 	<bean id="casAuthenticationProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
-		<property name="userDetailsService" ref="userService"></property>
-		<property name="serviceProperties" ref="serviceProperties"></property>
+		<property name="userDetailsService" ref="userService">
+		</property>
+		<property name="serviceProperties" ref="serviceProperties">
+		</property>
 		<property name="ticketValidator">
 			<bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
-				<constructor-arg index="0" value="https://localhost:18443/cas-server-webapp-4.0.0"></constructor-arg>
+				<constructor-arg index="0" value="https://localhost:18443/cas-server-webapp-4.0.0">
+				</constructor-arg>
 			</bean>
 		</property>
-		<property name="key" value="cas"></property>
+		<property name="key" value="cas">
+		</property>
 	</bean>
-
 	<!-- This filter handles a Single Logout Request from the CAS Server -->
-	<bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
+	<bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter" />
 	<!-- This filter redirects to the CAS Server to signal Single Logout should be performed -->
 	<bean id="requestSingleLogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
-		<constructor-arg value="https://localhost:18443/cas-server-webapp-4.0.0/logout?service=https://localhost:8443/IDwebapp"/><constructor-arg>
-	<bean class=
-			"org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+		<constructor-arg value="https://localhost:18443/cas-server-webapp-4.0.0/logout?service=https://localhost:8443/IDwebapp" />
+		<constructor-arg>
+			<bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" />
 		</constructor-arg>
 	</bean>
-
-	<!-- 
-		The users available for this application.
-	-->
-	<security:user-service id="userService">
-		<security:user name="casuser" authorities="ROLE_MANAGEMENT, ROLE_SALES, ROLE_HUMANR, ROLE_PURCHASES"></security:user>
-		<security:user name="ethan" authorities="ROLE_MANAGEMENT, ROLE_SALES, ROLE_HUMANR, ROLE_PURCHASES"></security:user>
-		<security:user name="martin" authorities="ROLE_SALES"></security:user>
-		<security:user name="laurie" authorities="ROLE_HUMANR"></security:user>
-		<security:user name="samuel" authorities="ROLE_PURCHASES"></security:user>
-		<security:user name="debbie" authorities="ROLE_AUDITOR"></security:user>
-	</security:user-service>
-
+	<!-- The users available for this application. -->
+	<user-service id="userService">
+		<user name="casuser" authorities="ROLE_MANAGEMENT, ROLE_SALES, ROLE_HUMANR, ROLE_PURCHASES">
+		</user>
+		<user name="ethan" authorities="ROLE_MANAGEMENT, ROLE_SALES, ROLE_HUMANR, ROLE_PURCHASES">
+		</user>
+		<user name="martin" authorities="ROLE_SALES">
+		</user>
+		<user name="laurie" authorities="ROLE_HUMANR">
+		</user>
+		<user name="samuel" authorities="ROLE_PURCHASES">
+		</user>
+		<user name="debbie" authorities="ROLE_AUDITOR">
+		</user>
+	</user-service>
 </beans>
