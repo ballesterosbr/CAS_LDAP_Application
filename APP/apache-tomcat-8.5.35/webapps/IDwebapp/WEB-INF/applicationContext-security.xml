@@ -87,7 +87,6 @@
 
 	<!-- The users available for this application. -->
 	<security:user-service id="userService">
-		<security:user name="casuser" authorities="ROLE_MANAGEMENT, ROLE_SALES, ROLE_HUMANR, ROLE_PURCHASES"></security:user>
 		<security:user name="ethan" authorities="ROLE_MANAGEMENT, ROLE_SALES, ROLE_HUMANR, ROLE_PURCHASES"></security:user>
 		<security:user name="martin" authorities="ROLE_SALES"></security:user>
 		<security:user name="laurie" authorities="ROLE_HUMANR"></security:user>
