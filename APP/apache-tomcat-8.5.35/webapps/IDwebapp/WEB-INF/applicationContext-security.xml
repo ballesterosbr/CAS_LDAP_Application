@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  - Sample namespace-based configuration
-  -
-  -->
+<!-- - Sample namespace-based configuration - -->
 
 <beans xmlns:security="http://www.springframework.org/schema/security"
     xmlns="http://www.springframework.org/schema/beans"
@@ -11,7 +8,7 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-   <!--
+	<!--
 		Enable security, let the casAuthenticationEntryPoint handle all intercepted urls.
 		The CAS_FILTER needs to be in the right position within the filter chain.
 	-->	
@@ -52,9 +49,7 @@
 		<property name="sendRenew" value="false"></property>
 	</bean>	
 
-        <!--
-		The CAS filter handles the redirect from the CAS server and starts the ticket validation.
-	-->
+    <!-- The CAS filter handles the redirect from the CAS server and starts the ticket validation. -->
 	<bean id="casAuthenticationFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
 		<property name="authenticationManager" ref="authenticationManager"></property>
 	</bean>
@@ -68,9 +63,7 @@
 		<property name="serviceProperties" ref="serviceProperties"></property>
 	</bean>
 
-	<!-- 
-		Handles the CAS ticket processing.
-	 -->
+	<!-- Handles the CAS ticket processing. -->
 	<bean id="casAuthenticationProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
 		<property name="userDetailsService" ref="userService"></property>
 		<property name="serviceProperties" ref="serviceProperties"></property>
