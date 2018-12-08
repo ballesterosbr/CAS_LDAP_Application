@@ -201,7 +201,7 @@
 <!--
    | The following DN format works for many directories, but may need to be
    | customized.
-   -->
+-->
 <bean id="dnResolver"
       class="org.ldaptive.auth.FormatDnResolver"
       c:format="uid=%s,${ldap.authn.baseDn}" />
@@ -220,7 +220,8 @@
       p:blockWaitTime="${ldap.pool.blockWaitTime}"
       p:validator-ref="searchValidator"
       p:pruneStrategy-ref="pruneStrategy"
-      p:connectionFactory-ref="connectionFactory" />
+      p:connectionFactory-ref="connectionFactory" 
+      p:failFastInitialize="false" />
 
 <bean id="ldapPoolConfig" class="org.ldaptive.pool.PoolConfig"
       p:minPoolSize="${ldap.pool.minSize}"
@@ -235,17 +236,16 @@
 <bean id="connectionConfig" class="org.ldaptive.ConnectionConfig"
       p:ldapUrl="${ldap.url}"
       p:connectTimeout="${ldap.connectTimeout}"
-      p:useStartTLS="${ldap.useStartTLS}" />
+      p:useStartTLS="${ldap.useStartTLS}" 
+      p:sslConfig-ref="sslConfig" />
 
-<!--
-p:sslConfig-ref="sslConfig" />
 <bean id="sslConfig" class="org.ldaptive.ssl.SslConfig">
     <property name="credentialConfig">
         <bean class="org.ldaptive.ssl.X509CredentialConfig"
               p:trustCertificates="${ldap.trustedCert}" />
     </property>
 </bean>
--->
+
 
 <bean id="pruneStrategy" class="org.ldaptive.pool.IdlePruneStrategy"
       p:prunePeriod="${ldap.pool.prunePeriod}"
