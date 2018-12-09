@@ -1,0 +1,29 @@
+#Ethan Edwards - Manager
+dn: cn=generalmanager, ou=management, ou=departments, dc=thesearchers, dc=net
+cn: generalmanager
+objectClass: organizationalRole
+roleOccupant: uid=ethan, ou=employees, dc=thesearchers, dc=net
+
+#Martin Pawley - Sales Manager
+dn: cn=salesmanager, ou=sales, ou=departments, dc=thesearchers, dc=net
+cn: salesmanager
+objectClass: organizationalRole
+roleOccupant: uid=martin, ou=employees, dc=thesearchers, dc=net
+
+#Laurie Jorgensen - HumanR Manager
+dn: cn=humanrmanager, ou=humanr, ou=departments, dc=thesearchers, dc=net
+cn: humanrmanager
+objectClass: organizationalRole
+roleOccupant: uid=laurie, ou=employees, dc=thesearchers, dc=net
+
+#Samuel Johnson - Purchases Manager
+dn: cn=purchasesmanager, ou=purchases, ou=departments, dc=thesearchers, dc=net
+cn: purchasesmanager
+objectClass: organizationalRole
+roleOccupant: uid=samuel, ou=employees, dc=thesearchers, dc=net
+
+#Debbie Edwards - Auditor
+dn: cn=auditor, ou=auditor, ou=departments, dc=thesearchers, dc=net
+cn: auditor
+objectClass: organizationalRole
+roleOccupant: uid=debbie, ou=employees, dc=thesearchers, dc=net

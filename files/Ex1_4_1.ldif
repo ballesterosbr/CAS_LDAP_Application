@@ -1,0 +1,55 @@
+#employees
+#Ethan Edwards
+dn: uid=ethan, ou=employees, dc=thesearchers, dc=net
+objectClass: inetOrgPerson
+cn: Ethan Edwards
+title: Gerente
+sn: Edwards
+uid: ethan
+userPassword: {SSHA}Ua0YG6/3s74lr4DLLG+ihiqGqim8QVOj
+roomNumber: Room1
+mail: ethan@thesearchers.net
+
+#Martin Pawley
+dn: uid=martin, ou=employees, dc=thesearchers, dc=net
+objectClass: inetOrgPerson
+cn: Martin Pawley
+title: Jefe de Ventas
+sn: Pawley
+uid: martin
+userPassword: {SSHA}kZmL26chVCobCscAMIycqxIanMX80j/S
+roomNumber: Room2
+mail: martin@thesearchers.net
+
+#Laurie Jorgensen
+dn: uid=laurie, ou=employees, dc=thesearchers, dc=net
+objectClass: inetOrgPerson
+cn: Laurie Jorgensen
+title: Jefe de Personal
+sn: Jorgensen
+uid: laurie
+userPassword: {SSHA}3bQUo5zoVQkXfDtcCQB/rFIVtTRWpSfV
+roomNumber: Room3
+mail: laurie@thesearchers.net
+
+#Samuel Johnson
+dn: uid=samuel, ou=employees, dc=thesearchers, dc=net
+objectClass: inetOrgPerson
+cn: Samuel Johnson
+title: Jefe de Compras
+sn: Johnson
+uid: samuel
+userPassword: {SSHA}idh1ZZM8XhsI0xRhcEbievgtLrMqJxZU
+roomNumber: Room4
+mail: samuel@thesearchers.net
+
+#Debbie Edwards
+dn: uid=debbie, ou=employees, dc=thesearchers, dc=net
+objectClass: inetOrgPerson
+cn: Debbe Edwards
+title: Auditor
+sn: Edwards
+uid: debbie
+userPassword: {SSHA}P3zMzC/EHWpm2bFx2czbjh0I1v2fWAZa
+roomNumber: Room5
+mail: debbie@thesearchers.net

@@ -1,0 +1,51 @@
+#Lars Jorgensen - customer
+dn: uid=lars, ou=customers, dc=thesearchers, dc=net
+objectClass: inetOrgPerson
+cn: Lars Jorgensen
+title: Director
+o: Navajo LTD
+sn: Jorgensen
+uid: lars
+userPassword: {SSHA}jTg8B16Af1T0Yn1+OHrwV4lqVTDU5JIt
+homePostalAddress: Monument Vallew, Arizona
+telephoneNumber: +1 (222) 123-4567
+mail: lars@navajo.com
+
+#Charlie McCorry - customer
+dn: uid=charlie, ou=customers, dc=thesearchers, dc=net
+objectClass: inetOrgPerson
+cn: Charlie McCorry
+title: Director
+o: Sioux INC
+sn: McCorry
+uid: charlie
+userPassword: {SSHA}FKYNdmAfHQBMjPKB6HfZ7OvUHS/UK9va
+homePostalAddress: Bryce Canyon, Utah
+telephoneNumber: +1 (333) 987-6543
+mail: charlie@sioux.com
+
+#Martha Edwards - supplier
+dn: uid=martha, ou=suppliers, dc=thesearchers, dc=net
+objectClass: inetOrgPerson
+cn: Martha Edwards
+title: Jefe Comercial
+o: Kiowa CORP
+sn: Edwards
+uid: martha
+userPassword: {SSHA}2wzJ1XSn/viGtl/TjNveuTTNX7JniuiW
+homePostalAddress: Natural Bridges, Utah
+telephoneNumber: +1 (444) 345-6789
+mail: martha@kiowa.com
+
+#Mose Harper - supplier
+dn: uid=mose, ou=suppliers, dc=thesearchers, dc=net
+objectClass: inetOrgPerson
+cn: Mose Harper
+title: Jefe Comercial
+o: Mojave LLC
+sn: Harper
+uid: mose
+userPassword: {SSHA}YM7NTUFMZluw0qQ+XSGyREwHUNwWM+bv
+homePostalAddress: Death Valley, California
+telephoneNumber: +1 (555) 321-9876
+mail: mose@mojave.com

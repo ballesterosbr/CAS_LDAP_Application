@@ -1,0 +1,35 @@
+dn: ou=employees, dc=thesearchers, dc=net
+objectClass: organizationalUnit
+ou: employees
+
+dn: ou=customers, dc=thesearchers, dc=net
+objectClass: organizationalUnit
+ou: customers
+
+dn: ou=suppliers, dc=thesearchers, dc=net
+objectClass: organizationalUnit
+ou: suppliers
+
+dn: ou=departments, dc=thesearchers, dc=net
+objectClass: organizationalUnit
+ou: departments
+
+dn: ou=management, ou=departments, dc=thesearchers, dc=net
+objectClass: organizationalUnit
+ou: management
+
+dn: ou=sales, ou=departments, dc=thesearchers, dc=net
+objectClass: organizationalUnit
+ou: sales
+
+dn: ou=humanr, ou=departments, dc=thesearchers, dc=net
+objectClass: organizationalUnit
+ou: humanr
+
+dn: ou=purchases, ou=departments, dc=thesearchers, dc=net
+objectClass: organizationalUnit
+ou: purchases
+
+dn: ou=auditor, ou=departments, dc=thesearchers, dc=net
+objectClass: organizationalUnit
+ou: auditor
