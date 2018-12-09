@@ -246,7 +246,6 @@
     </property>
 </bean>
 
-
 <bean id="pruneStrategy" class="org.ldaptive.pool.IdlePruneStrategy"
       p:prunePeriod="${ldap.pool.prunePeriod}"
       p:idleTime="${ldap.pool.idleTime}" />
